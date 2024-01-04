@@ -1,10 +1,19 @@
 {% load static %}
 <header class="cabecalho">
     <img src="{% static 'galeria/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
+    {% for message in messages %}
+        <div class="alert alert-primary">
+            <p id="messages">{{ message }}</p>
+        </div>
+    {% endfor %}
     <div class="cabecalho__busca">
         <div class="busca__fundo">
-            <input class="busca__input" type="text" placeholder="O que você procura?">
-            <img class="busca__icone" src="{% static 'galeria/assets/ícones/1x/search.png' %}" alt="ícone de search">
+            <form action="{% url 'busca'%}" method="get">
+                <input class="busca__input" name="busca" type="text" placeholder="O que você procura?">
+                <button type="submit">
+                    <img class="busca__icone" src="{% static 'galeria/assets/ícones/1x/search.png' %}" alt="ícone de search">
+                </button>
+            </form>
         </div>
     </div>
 </header>
